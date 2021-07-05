@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [incompletedTasks, setIncompletedTasks] = useState(["aaaaa", "bbbbb"]);
+  const [completedTasks, setCompletedTasks] = useState(["ccccc", "ddddd"]);
   return (
     <>
       <div className="input-area">
@@ -11,29 +13,29 @@ export const App = () => {
       <div className="incompleted-task-area">
         <p className="title">未完了のタスク</p>
         <ul>
-          <div className="list-row">
-            <li>あああああああああ</li>
-            <button>完了</button>
-            <button>削除</button>
-          </div>
-          <div className="list-row">
-            <li>いいいいいいいい</li>
-            <button>完了</button>
-            <button>削除</button>
-          </div>
+          {incompletedTasks.map((task) => {
+            return (
+              <div key={task} className="list-row">
+                <li>{task}</li>
+                <button>完了</button>
+                <button>削除</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
       <div className="completed-task-area">
         <p className="title">完了したタスク</p>
         <ul>
-          <div className="list-row">
-            <li>ううううう</li>
-            <button>戻す</button>
-          </div>
-          <div className="list-row">
-            <li>えええええええ</li>
-            <button>戻す</button>
-          </div>
+          {completedTasks.map((task) => {
+            return (
+              <div key={task} className="list-row">
+                <li>{task}</li>
+                <button>完了</button>
+                <button>削除</button>
+              </div>
+            );
+          })}
         </ul>
       </div>
     </>
